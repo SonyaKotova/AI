@@ -60,7 +60,7 @@ def calculate(expression):
         return "Ошибка в вычислении"
 
 def search_web(query):
-    url = f"https://www.google.com/search?q={query.replace('','+')}"
+    url = f"https://www.google.com/search?q={query.replace(' ','+')}"
     webbrowser.open(url)
     return random.choice([
         f"Ищу в интернете: {query}",
