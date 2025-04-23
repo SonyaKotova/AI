@@ -1,0 +1,34 @@
+version: "3.1"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: Respond to positive mood
+  condition:
+    - slot_was_set:
+        - user_mood: "positive"
+  steps:
+  - action: utter_mood_positive
+
+- rule: Respond to negative mood
+  condition:
+    - slot_was_set:
+        - user_mood: "negative"
+  steps:
+  - action: utter_mood_negative
+
+- rule: Respond to neutral mood
+  condition:
+    - slot_was_set:
+        - user_mood: "neutral"
+  steps:
+  - action: utter_mood_neutral

@@ -1,0 +1,111 @@
+version: "3.1"
+
+stories:
+- story: Приветствие
+  steps:
+    - intent: greet
+    - action: utter_greet
+
+- story: Прощание
+  steps:
+    - intent: goodbye
+    - action: utter_goodbye
+
+- story: Запрос помощи
+  steps:
+    - intent: help
+    - action: utter_help
+
+- story: Запрос погоды
+  steps:
+    - intent: weather
+    - action: action_weather
+
+- story: Перевод текста
+  steps:
+    - intent: translate
+    - action: action_translate
+
+- story: Вычисления
+  steps:
+    - intent: calculate
+    - action: action_calculate
+
+- story: Запрос времени
+  steps:
+    - intent: datetime
+    - action: action_datetime
+
+- story: Рассказ анекдота
+  steps:
+    - intent: joke
+    - action: utter_joke
+
+- story: Узнать имя бота
+  steps:
+    - intent: name
+    - action: utter_name
+
+- story: Реакция на комплимент
+  steps:
+    - intent: compliment
+    - action: utter_compliment_response
+
+- story: Обсуждение настроения
+  steps:
+    - intent: mood
+    - action: utter_mood_response
+
+- story: Ответ на благодарность
+  steps:
+    - intent: thanks
+    - action: utter_thanks_response
+
+- story: Поиск в интернете
+  steps:
+    - intent: search
+    - action: action_search
+
+- story: Цитата дня
+  steps:
+    - intent: quote
+    - action: utter_quote
+
+- story: Совет дня
+  steps:
+    - intent: advice
+    - action: utter_advice
+
+- story: Позитивный настрой
+  steps:
+    - intent: mood_positive
+    - action: action_analyze_sentiment
+    - action: utter_mood_positive
+
+- story: Негативный настрой
+  steps:
+    - intent: mood_negative
+    - action: action_analyze_sentiment
+    - action: utter_mood_negative
+
+- story: Нейтральный настрой
+  steps:
+    - intent: mood_neutral
+    - action: action_analyze_sentiment
+    - action: utter_mood_neutral
+
+- story: Обсуждение времени года
+  steps:
+    - intent: season
+    - action: utter_season_response
+
+- story: Комбинированный сценарий (пример)
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: weather
+    - action: action_weather
+    - intent: thanks
+    - action: utter_thanks_response
+    - intent: goodbye
+    - action: utter_goodbye
