@@ -1,0 +1,78 @@
+version: "3.1"
+
+rules:
+- rule: Загрузка данных при старте сессии
+  conversation_start: true  # Выполнять при начале диалога
+  steps:
+    - action: action_load_user_data
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: Respond to positive mood
+  condition:
+    - slot_was_set:
+        - user_mood: "positive"
+  steps:
+  - action: utter_mood_positive
+
+- rule: Respond to negative mood
+  condition:
+    - slot_was_set:
+        - user_mood: "negative"
+  steps:
+  - action: utter_mood_negative
+
+- rule: Respond to neutral mood
+  condition:
+    - slot_was_set:
+        - user_mood: "neutral"
+  steps:
+  - action: utter_mood_neutral
+
+- rule: Загрузить данные пользователя при старте
+  steps:
+    - intent: greet
+    - action: action_load_user_data
+    - action: utter_greet
+
+- rule: Сохранить данные при завершении
+  steps:
+    - intent: goodbye
+    - action: action_save_user_data
+    - action: utter_goodbye
+
+- rule: Сохранение имени пользователя
+  steps:
+    - intent: set_name
+    - action: action_save_user_data  # Сохраняет имя в базу
+    - action: utter_confirm_name
+
+- rule: Сохранение города
+  steps:
+    - intent: set_city
+    - action: action_save_user_data
+    - action: utter_confirm_city
+
+- rule: Сохранение хобби
+  steps:
+    - intent: set_hobbies
+    - action: action_save_user_data
+    - action: utter_confirm_hobbies
+
+- rule: Ответ на вопрос об имени
+  steps:
+    - intent: ask_name
+    - action: utter_ask_name
+
+- rule: Ответ на вопрос о городе
+  steps:
+    - intent: ask_city
+    - action: utter_ask_city
+
+- rule: Запрос погоды
+  steps:
+    - intent: weather
+    - action: action_weather
